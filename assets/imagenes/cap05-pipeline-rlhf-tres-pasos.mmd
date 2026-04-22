@@ -1,0 +1,32 @@
+graph TD
+    subgraph Paso1["Paso 1: Recoger preferencias humanas"]
+        P1["Prompt"] --> G1["Modelo genera<br/>respuestas candidatas"]
+        G1 --> RA["Respuesta A"]
+        G1 --> RB["Respuesta B"]
+        RA --> H["Anotador humano<br/>compara pares"]
+        RB --> H
+        H --> D["Dataset de<br/>preferencias"]
+    end
+
+    subgraph Paso2["Paso 2: Entrenar modelo de recompensa"]
+        D --> RM["Entrenamiento con<br/>pérdida Bradley-Terry"]
+        RM --> RMF["Reward Model<br/><i>Proxy del juicio humano</i>"]
+    end
+
+    subgraph Paso3["Paso 3: Optimizar política con RL"]
+        RMF --> SCORE["Puntuar respuestas<br/>generadas"]
+        LLM["LLM genera<br/>respuestas"] --> SCORE
+        SCORE --> RL["Algoritmo RL<br/>+ penalización KL"]
+        RL --> LLM
+    end
+
+    classDef paso1 fill:#4A90D9,stroke:#2C5F8A,color:#FFFFFF
+    classDef paso2 fill:#F5A623,stroke:#C4841C,color:#FFFFFF
+    classDef paso3 fill:#7ED321,stroke:#5A9A18,color:#FFFFFF
+    classDef subg1 fill:#E8F0FE,stroke:#4A90D9
+    classDef subg2 fill:#FEF3E0,stroke:#F5A623
+    classDef subg3 fill:#E8F8E0,stroke:#7ED321
+
+    class P1,G1,RA,RB,H,D paso1
+    class RM,RMF paso2
+    class SCORE,LLM,RL paso3

@@ -1,0 +1,23 @@
+flowchart LR
+    IMG[Imagen\ndocumento] --> RS[Resize\n1024 px max]
+    RS --> B64[Base64\ncodificación]
+    B64 --> OLL[Ollama\nGLM-OCR]
+    OLL --> VE[Vision Encoder\nprefill visual]
+    VE --> KV[KV Cache\nconstruido]
+    KV --> DEC[Decoder\ntokens de texto]
+    DEC --> MD[Markdown\nestructurado]
+
+    VE -. "TTFT: 174s\ncompute-bound" .-> KV
+    DEC -. "Decode: 9s\nmemory-BW-bound" .-> MD
+
+    classDef datos    fill:#F5A623,stroke:#C47D0E,color:#fff
+    classDef proceso  fill:#50B86C,stroke:#2D7A42,color:#fff
+    classDef modelo   fill:#4A90D9,stroke:#2C5F8A,color:#fff
+    classDef alerta   fill:#E85C5C,stroke:#A83C3C,color:#fff
+    classDef metrica  fill:#E67E6B,stroke:#B04A3C,color:#fff
+
+    class IMG,B64 datos
+    class RS proceso
+    class OLL,VE,DEC modelo
+    class KV datos
+    class MD metrica

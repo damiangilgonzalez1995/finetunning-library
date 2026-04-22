@@ -1,0 +1,31 @@
+graph TD
+    M["Métricas a vigilar<br/>durante el entrenamiento LoRA"]
+
+    M --> TL["Training Loss"]
+    M --> GN["Gradient Norm"]
+    M --> PR["Ratio parámetros<br/>entrenables"]
+    M --> EL["Eval Loss"]
+
+    TL --> TL1["Descenso suave<br/>Comportamiento normal"]
+    TL --> TL2["Caída muy rápida al inicio<br/>LR demasiado alto"]
+    TL --> TL3["No baja tras 50-100 pasos<br/>LR bajo o rango insuficiente"]
+
+    GN --> GN1["0.1 a 2.0<br/>Rango saludable"]
+    GN --> GN2["Mayor a 5 consistente<br/>Entrenamiento inestable<br/>Reducir LR o usar clipping"]
+
+    PR --> PR1["0.5% a 3%<br/>Configuración correcta"]
+    PR --> PR2["100%<br/>Error: congelamiento no aplicado"]
+    PR --> PR3["Menor a 0.01%<br/>Pocos módulos target"]
+
+    EL --> EL1["Eval loss sigue a train loss<br/>Sin sobreajuste"]
+    EL --> EL2["Eval sube, train baja<br/>Sobreajuste: bajar rango<br/>o aumentar dropout"]
+
+    classDef central fill:#3498db,stroke:#2980b9,color:#fff
+    classDef metrica fill:#9b59b6,stroke:#8e44ad,color:#fff
+    classDef ok fill:#2ecc71,stroke:#27ae60,color:#fff
+    classDef warn fill:#e74c3c,stroke:#c0392b,color:#fff
+
+    class M central
+    class TL,GN,PR,EL metrica
+    class TL1,GN1,PR1,EL1 ok
+    class TL2,TL3,GN2,PR2,PR3,EL2 warn

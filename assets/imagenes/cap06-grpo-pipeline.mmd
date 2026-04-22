@@ -1,0 +1,22 @@
+flowchart LR
+    P[Prompt de entrada]
+
+    P --> R1[Respuesta A\nreward = 1.0]
+    P --> R2[Respuesta B\nreward = 0.0]
+    P --> R3[Respuesta C\nreward = 1.0]
+    P --> R4[Respuesta D\nreward = 0.5]
+
+    R1 & R2 & R3 & R4 --> V["Ventaja relativa\nz-score del grupo"]
+    V --> U[Actualizar política]
+
+    classDef correcto fill:#ccffcc,stroke:#006600,color:#000
+    classDef incorrecto fill:#ffcccc,stroke:#cc0000,color:#000
+    classDef parcial fill:#fff3cd,stroke:#856404,color:#000
+    classDef proceso fill:#cce5ff,stroke:#0066cc,color:#000
+    classDef io fill:#e2d9f3,stroke:#6f42c1,color:#000
+
+    class R1,R3 correcto
+    class R2 incorrecto
+    class R4 parcial
+    class P,U io
+    class V proceso

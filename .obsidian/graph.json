@@ -1,0 +1,58 @@
+{
+  "collapse-filter": false,
+  "search": "path:capitulos/ OR path:conceptos/ OR file:MOC",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:capitulos/",
+      "color": {
+        "a": 1,
+        "rgb": 14431557
+      }
+    },
+    {
+      "query": "tag:#tipo/técnica",
+      "color": {
+        "a": 1,
+        "rgb": 3447003
+      }
+    },
+    {
+      "query": "tag:#tipo/concepto",
+      "color": {
+        "a": 1,
+        "rgb": 2673477
+      }
+    },
+    {
+      "query": "tag:#tipo/modelo",
+      "color": {
+        "a": 1,
+        "rgb": 16098851
+      }
+    },
+    {
+      "query": "tag:#tipo/herramienta",
+      "color": {
+        "a": 1,
+        "rgb": 10181046
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1.5,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.5,
+  "repelStrength": 12,
+  "linkStrength": 0.8,
+  "linkDistance": 220,
+  "scale": 0.18462326225858094,
+  "close": false
+}

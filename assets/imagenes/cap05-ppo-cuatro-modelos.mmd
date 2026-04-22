@@ -1,0 +1,30 @@
+graph TD
+    PROMPT["Prompt de entrada"] --> ACTOR
+
+    subgraph Entrenamiento["Setup de 4 modelos de PPO"]
+        ACTOR["Actor<br/><i>LLM que se optimiza</i>"]
+        CRITIC["Critic<br/><i>Red de valor para<br/>calcular ventaja</i>"]
+        REWARD["Reward Model<br/><i>Congelado, puntúa outputs</i>"]
+        REF["Reference Model<br/><i>Copia congelada del SFT</i>"]
+    end
+
+    ACTOR --> GEN["Genera respuesta"]
+    GEN --> REWARD
+    GEN --> REF
+    REWARD --> SCORE["Puntuación de<br/>recompensa"]
+    REF --> KL["Penalización KL<br/><i>Evita reward hacking</i>"]
+    SCORE --> ADV["Cálculo de ventaja"]
+    KL --> ADV
+    CRITIC --> ADV
+    ADV --> UPDATE["Actualizar Actor"]
+    UPDATE --> ACTOR
+
+    classDef activo fill:#4A90D9,stroke:#2C5F8A,color:#FFFFFF,font-weight:bold
+    classDef congelado fill:#95A5A6,stroke:#7F8C8D,color:#FFFFFF,font-weight:bold
+    classDef proceso fill:#F5A623,stroke:#C4841C,color:#FFFFFF,font-weight:bold
+    classDef input fill:#1ABC9C,stroke:#16A085,color:#FFFFFF,font-weight:bold
+
+    class ACTOR,CRITIC activo
+    class REWARD,REF congelado
+    class GEN,SCORE,KL,ADV,UPDATE proceso
+    class PROMPT input

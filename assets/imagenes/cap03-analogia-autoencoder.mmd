@@ -1,0 +1,30 @@
+graph LR
+    subgraph Autoencoder ["Autoencoder: comprimir datos"]
+        D1["Imagen de entrada<br/>784 píxeles (alta dim)"]
+        E["Encoder<br/>(comprime)"]
+        L["Espacio latente<br/>32 dimensiones (baja dim)"]
+        Dec["Decoder<br/>(reconstruye)"]
+        D2["Imagen reconstruida<br/>784 píxeles"]
+        D1 --> E --> L --> Dec --> D2
+    end
+
+    subgraph LoRA ["LoRA: comprimir actualizaciones de pesos"]
+        W["Pesos originales W<br/>(millones de parámetros)"]
+        DW["ΔW densa<br/>(full rank, inviable)"]
+        BA["B · A<br/>bajo rango r (viable)"]
+        W --> DW
+        DW -.->|"reemplazado por"| BA
+    end
+
+    Analogia["La misma idea:<br/>la estructura útil vive<br/>en baja dimensionalidad"]
+
+    L -.->|"inspira"| BA
+    BA --> Analogia
+
+    classDef ae fill:#3498db,stroke:#2980b9,color:#fff
+    classDef lora fill:#2ecc71,stroke:#27ae60,color:#fff
+    classDef insight fill:#f39c12,stroke:#d68910,color:#fff
+
+    class D1,E,L,Dec,D2 ae
+    class W,DW,BA lora
+    class Analogia insight

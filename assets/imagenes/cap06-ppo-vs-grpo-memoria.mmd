@@ -1,0 +1,22 @@
+flowchart LR
+    subgraph PPO["PPO — cuatro modelos"]
+        A1[Actor\n~56 GB]
+        A2[Crítico\n~56 GB]
+        A3[Referencia\n~14 GB]
+        A4[Reward Model\n~14 GB]
+    end
+
+    subgraph GRPO["GRPO — sin crítico"]
+        B1[Actor\n~56 GB]
+        B2[Referencia\n~14 GB]
+        B3[Reward Model\n~14 GB]
+        B4([Crítico eliminado])
+    end
+
+    PPO -->|"−40 % VRAM\n1/18 del coste"| GRPO
+
+    classDef eliminado fill:#ffcccc,stroke:#cc0000,color:#000,stroke-dasharray:5 5
+    classDef presente fill:#cce5ff,stroke:#0066cc,color:#000
+
+    class A1,A2,A3,A4,B1,B2,B3 presente
+    class B4 eliminado

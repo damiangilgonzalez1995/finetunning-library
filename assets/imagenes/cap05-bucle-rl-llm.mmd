@@ -1,0 +1,22 @@
+graph TD
+    A["Prompt\n(Estado inicial)"] --> B["Modelo LLM\n(Agente / Política)"]
+    B --> C["Generar siguiente token\n(Acción)"]
+    C --> D{"¿Respuesta\ncompletada?"}
+    D -- "No" --> B
+    D -- "Sí" --> E["Respuesta completa\n(Episodio terminado)"]
+    E --> F["Evaluador\n(Entorno)"]
+    F --> G["Recompensa escalar\n(Señal de calidad)"]
+    G --> H["Algoritmo RL\nActualiza política"]
+    H --> B
+
+    classDef agentColor fill:#2196F3,color:#fff,stroke:#1565C0
+    classDef envColor fill:#FF9800,color:#fff,stroke:#E65100
+    classDef rewardColor fill:#4CAF50,color:#fff,stroke:#388E3C
+    classDef actionColor fill:#9C27B0,color:#fff,stroke:#6A1B9A
+    classDef decisionColor fill:#607D8B,color:#fff,stroke:#37474F
+
+    class A,B agentColor
+    class C actionColor
+    class D decisionColor
+    class E,F envColor
+    class G,H rewardColor

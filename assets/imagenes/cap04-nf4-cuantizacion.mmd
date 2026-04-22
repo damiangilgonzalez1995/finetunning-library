@@ -1,0 +1,24 @@
+flowchart LR
+    BLQ["Bloque 64 pesos\n(valores continuos)"]
+    NORM["Normalización\ndividir por max"]
+    MAP["Mapeo a cuantil\n16 valores NF4"]
+    IDX["Índice 4 bits\n+ escala FP16"]
+    DEQNT["Dequantización\ncada forward pass"]
+    BF16["Tensor BF16\npara cómputo"]
+
+    BLQ --> NORM
+    NORM --> MAP
+    MAP --> IDX
+    IDX --> DEQNT
+    DEQNT --> BF16
+
+    classDef entrada fill:#9b59b6,stroke:#8e44ad,color:#fff
+    classDef proceso fill:#3498db,stroke:#2980b9,color:#fff
+    classDef almacen fill:#e67e22,stroke:#d35400,color:#fff
+    classDef salida fill:#2ecc71,stroke:#27ae60,color:#fff
+
+    class BLQ entrada
+    class NORM,MAP proceso
+    class IDX almacen
+    class DEQNT proceso
+    class BF16 salida

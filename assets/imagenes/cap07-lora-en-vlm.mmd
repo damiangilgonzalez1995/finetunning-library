@@ -1,0 +1,20 @@
+graph LR
+    subgraph CONGELADO["Componentes CONGELADOS (sin gradientes)"]
+        direction TB
+        VIT["Vision Encoder\n(ViT preentrenado)\nExtrae características visuales"]
+        PROJ["Capa de Proyección\n(opcional, según caso de uso)\nAdapta dimensiones"]
+    end
+
+    subgraph ENTRENABLE["Componentes ENTRENABLES (LoRA)"]
+        direction TB
+        LORA["Decoder LLM\nAdaptadores LoRA (Δθ)\nen capas de atención\n\nΔW = A × B\n(rango bajo r ≪ d)"]
+    end
+
+    VIT -->|tokens visuales| PROJ
+    PROJ -->|tokens proyectados| LORA
+
+    classDef frozen fill:#b3d9ff,stroke:#3399ff,color:#003366
+    classDef trainable fill:#c3f0c3,stroke:#33aa33,color:#003300
+
+    class VIT,PROJ frozen
+    class LORA trainable

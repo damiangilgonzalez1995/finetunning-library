@@ -1,0 +1,25 @@
+flowchart LR
+    subgraph MEM["Memoria necesaria — modelo 7B"]
+        direction LR
+        A([Pesos\n14 GB]) --> E([Total\n~100 GB])
+        B([Gradientes\n14 GB]) --> E
+        C([Optimizador\nAdam 56 GB]) --> E
+        D([Activaciones\n~20 GB]) --> E
+    end
+
+    subgraph SOL["Técnicas de reducción"]
+        direction LR
+        F([BF16\n÷2 memoria]) --> I([GPU\naccesible])
+        G([Grad. Accum.\nbatch virtual]) --> I
+        H([Act. Checkpt.\n-70% activ.]) --> I
+    end
+
+    classDef costo fill:#FEE2E2,stroke:#EF4444,color:#7F1D1D
+    classDef total fill:#F3F4F6,stroke:#6B7280,color:#111827
+    classDef sol fill:#DCFCE7,stroke:#22C55E,color:#14532D
+    classDef gpu fill:#DBEAFE,stroke:#3B82F6,color:#1E3A5F
+
+    class A,B,C,D costo
+    class E total
+    class F,G,H sol
+    class I gpu

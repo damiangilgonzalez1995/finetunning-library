@@ -1,0 +1,24 @@
+flowchart LR
+    subgraph FRAME["1 frame temporal (1/12 seg)"]
+        direction TB
+        T1["Token capa 1\nritmo global\n1 token"]
+        T2A["Token capa 2a\nfonética\n1 token"]
+        T3A["Token capa 3a\ntextura\n1 token"]
+        T3B["Token capa 3b\ntextura\n1 token"]
+        T2B["Token capa 2b\nfonética\n1 token"]
+        T3C["Token capa 3c\ntextura\n1 token"]
+        T3D["Token capa 3d\ntextura\n1 token"]
+    end
+
+    FRAME --> SEQ["Secuencia plana\n7 tokens/frame\n84 tokens/seg"]
+    SEQ --> LLM["LLM predice\ncada token\nen orden"]
+
+    classDef c1 fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#0d2d6e
+    classDef c2 fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#0a3d0a
+    classDef c3 fill:#f8bbd9,stroke:#ad1457,stroke-width:2px,color:#5a0020
+    classDef proc fill:#fff8e1,stroke:#f9a825,stroke-width:2px,color:#5a3e00
+
+    class T1 c1
+    class T2A,T2B c2
+    class T3A,T3B,T3C,T3D c3
+    class SEQ,LLM proc

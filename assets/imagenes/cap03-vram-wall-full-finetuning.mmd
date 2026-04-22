@@ -1,0 +1,31 @@
+graph TD
+    W["Pesos originales W<br/>(miles de millones)"]
+    DW["Corrección ΔW<br/>(mismas dimensiones que W)"]
+    G["Gradientes de ΔW"]
+    O1["Momento 1 de Adam<br/>(media)"]
+    O2["Momento 2 de Adam<br/>(varianza)"]
+    WP["Pesos actualizados<br/>W' = W + ΔW"]
+
+    W --> WP
+    DW --> WP
+    G --> DW
+    O1 --> DW
+    O2 --> DW
+
+    subgraph VRAM ["VRAM necesario"]
+        W
+        DW
+        G
+        O1
+        O2
+    end
+
+    classDef pesos fill:#4a90d9,stroke:#2c5ea0,color:#fff
+    classDef grad fill:#e67e22,stroke:#c0650f,color:#fff
+    classDef optim fill:#e74c3c,stroke:#c0392b,color:#fff
+    classDef resultado fill:#2ecc71,stroke:#27ae60,color:#fff
+
+    class W,DW pesos
+    class G grad
+    class O1,O2 optim
+    class WP resultado

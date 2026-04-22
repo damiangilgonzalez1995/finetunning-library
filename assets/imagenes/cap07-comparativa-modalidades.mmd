@@ -1,0 +1,30 @@
+flowchart LR
+    subgraph TEXT["Fine-tuning de Texto"]
+        direction TB
+        TI["Tokens\nde texto"] --> TL["LLM + LoRA"]
+        TL --> TO["Texto\ngenerado"]
+    end
+
+    subgraph VLM["Fine-tuning de Visión"]
+        direction TB
+        VI["Imagen\n+ Texto"] --> VE["ViT\ncongelado"]
+        VE --> VP["Projector\nentrena"]
+        VP --> VL["LLM + LoRA"]
+        VL --> VO["Texto\ngenerado"]
+    end
+
+    subgraph TTS["Fine-tuning TTS"]
+        direction TB
+        AI["Texto\n+ Audio"] --> AE["Codec\nEncoder"]
+        AE --> AL["LLM + LoRA"]
+        AL --> AD["Codec\nDecoder"]
+        AD --> AO["Audio\ngenerado"]
+    end
+
+    classDef text fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#0d2d6e
+    classDef vlm fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#0a3d0a
+    classDef tts fill:#fce4ec,stroke:#c62828,stroke-width:2px,color:#5a0000
+
+    class TI,TL,TO text
+    class VI,VE,VP,VL,VO vlm
+    class AI,AE,AL,AD,AO tts

@@ -1,0 +1,26 @@
+graph LR
+    subgraph PPO["PPO — On-policy"]
+        P1["Dataset de<br/>preferencias"] --> P2["Entrenar<br/>Reward Model"]
+        P2 --> P3["Generar respuestas<br/>con política actual"]
+        P3 --> P4["Puntuar con<br/>Reward Model"]
+        P4 --> P5["Actualizar política<br/>con clipping"]
+        P5 --> P3
+        P6["4 modelos en memoria"]
+        P7["Mayor calidad<br/>de alineación"]
+    end
+
+    subgraph DPO["DPO — Off-policy"]
+        D1["Dataset de<br/>preferencias"] --> D2["Calcular log-probs<br/>de pares preferidos"]
+        D2 --> D3["Pérdida de<br/>entropía cruzada binaria"]
+        D3 --> D4["Actualizar política<br/>directamente"]
+        D5["2 modelos en memoria"]
+        D6["Velocidad similar<br/>a SFT"]
+    end
+
+    classDef ppo fill:#4A90D9,stroke:#2C5F8A,color:#FFFFFF
+    classDef dpo fill:#7ED321,stroke:#5A9A18,color:#FFFFFF
+    classDef info fill:#F0F0F0,stroke:#CCCCCC,color:#555555,font-style:italic
+
+    class P1,P2,P3,P4,P5 ppo
+    class D1,D2,D3,D4 dpo
+    class P6,P7,D5,D6 info

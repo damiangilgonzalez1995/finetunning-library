@@ -1,0 +1,32 @@
+graph TD
+    subgraph ABSMAX["Cuantización Absmax (Global)"]
+        direction TB
+        T1["Tensor completo"]
+        S1["1 factor de escala<br/>scale = max(|W|)"]
+        P1["Problema: un outlier<br/>comprime todo el rango"]
+        T1 --> S1
+        S1 --> P1
+    end
+
+    subgraph BLOCK["Cuantización por Bloques"]
+        direction TB
+        T2["Tensor dividido<br/>en bloques de 64"]
+        B1["Bloque 1<br/>escala local"]
+        B2["Bloque 2<br/>escala local"]
+        B3["Bloque N<br/>escala local"]
+        V2["Outliers solo afectan<br/>su bloque local"]
+        T2 --> B1
+        T2 --> B2
+        T2 --> B3
+        B1 --> V2
+        B2 --> V2
+        B3 --> V2
+    end
+
+    classDef problema fill:#e74c3c,stroke:#c0392b,color:#fff
+    classDef solucion fill:#2ecc71,stroke:#27ae60,color:#fff
+    classDef neutro fill:#3498db,stroke:#2980b9,color:#fff
+
+    class P1 problema
+    class V2 solucion
+    class T1,T2,S1,B1,B2,B3 neutro

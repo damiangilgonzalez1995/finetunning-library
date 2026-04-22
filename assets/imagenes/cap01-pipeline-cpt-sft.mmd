@@ -1,0 +1,16 @@
+graph TD
+    A["Modelo Preentrenado<br/>(Generalista)"] --> B["Continued PreTraining<br/>(CPT)"]
+    B --> C["Modelo con<br/>Conocimiento de Dominio"]
+    C --> D["Supervised Finetuning<br/>(SFT)"]
+    D --> E["Modelo Final<br/>(Desplegado)"]
+
+    B -.- F["Texto crudo de dominio<br/>(sin etiquetas)"]
+    D -.- G["Pares (prompt, respuesta)<br/>(datos etiquetados)"]
+
+    classDef modelo fill:#4A90D9,stroke:#2C5F8A,color:#fff
+    classDef proceso fill:#50B86C,stroke:#2D7A42,color:#fff
+    classDef datos fill:#F5A623,stroke:#C47D0E,color:#fff
+
+    class A,C,E modelo
+    class B,D proceso
+    class F,G datos

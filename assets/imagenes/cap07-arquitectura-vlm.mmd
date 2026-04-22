@@ -1,0 +1,20 @@
+flowchart LR
+    IMG[Imagen\nde entrada] --> VIT[Codificador\nde visión ViT\n🔒 congelado]
+    VIT --> VTOK[1024 tokens\nvisuales\ndim d_v]
+    VTOK --> PROJ[Capa de\nproyección\nMLP]
+    PROJ --> VPROJ[256 tokens\nproyectados\ndim d]
+    TXT[Prompt\nde texto] --> TEMB[Embeddings\nde texto]
+    VPROJ --> CONCAT[Concatenar\ntokens]
+    TEMB --> CONCAT
+    CONCAT --> LLM[LLM\ndecodificador\nLoRA]
+    LLM --> OUT[Respuesta\nde texto]
+
+    classDef frozen fill:#e8f4f8,stroke:#4a90d9,stroke-width:2px,color:#1a3a5c
+    classDef trainable fill:#eaf7ea,stroke:#4caf50,stroke-width:2px,color:#1a4a1a
+    classDef data fill:#fff8e1,stroke:#f9a825,stroke-width:2px,color:#5a3e00
+    classDef output fill:#fce4ec,stroke:#e91e63,stroke-width:2px,color:#5a0020
+
+    class VIT frozen
+    class PROJ,LLM trainable
+    class IMG,TXT,VTOK,TEMB,VPROJ,CONCAT data
+    class OUT output

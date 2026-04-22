@@ -1,0 +1,33 @@
+graph TD
+    AUDIO["Señal de audio\n(forma de onda continua)"]
+
+    subgraph ENCODER["Encoder del Codec (SNAC)"]
+        C1["Capa Gruesa — 12 Hz\n1 token / frame\nProsodia, ritmo, identidad del hablante"]
+        C2["Capa Media — 24 Hz\n2 tokens / frame\nPatrones fonéticos, entonación"]
+        C3["Capa Fina — 48 Hz\n4 tokens / frame\nTextura acústica, matices de voz"]
+    end
+
+    FRAME["1 frame temporal\n= 1 + 2 + 4 = 7 tokens intercalados"]
+    RATE["Tasa total: ~83 tokens/segundo\n(con codebook de 4.096 entradas por capa)"]
+    TOKENS["Secuencia de tokens de audio\n(IDs enteros desplazados)"]
+
+    AUDIO --> C1
+    AUDIO --> C2
+    AUDIO --> C3
+    C1 --> FRAME
+    C2 --> FRAME
+    C3 --> FRAME
+    FRAME --> RATE
+    RATE --> TOKENS
+
+    classDef coarse fill:#f0d9ff,stroke:#9933cc,color:#330066
+    classDef mid fill:#d9f0ff,stroke:#3399cc,color:#003366
+    classDef fine fill:#d9ffd9,stroke:#339933,color:#003300
+    classDef neutral fill:#fff3b0,stroke:#ccaa00,color:#443300
+    classDef output fill:#ffd6d6,stroke:#cc3333,color:#440000
+
+    class C1 coarse
+    class C2 mid
+    class C3 fine
+    class AUDIO,FRAME,RATE neutral
+    class TOKENS output

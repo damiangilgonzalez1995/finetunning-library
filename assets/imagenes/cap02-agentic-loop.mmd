@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant U as Usuario
+    participant M as Modelo
+    participant H as Herramienta
+
+    U->>M: Pregunta / tarea
+    Note over M: Thought — razona\nqué necesita
+    M->>H: Tool call JSON
+    H-->>M: Observation
+    Note over M: Procesa resultado
+    M-->>U: Respuesta final
