@@ -1,0 +1,29 @@
+graph TD
+    Config["Configuración LoRA"]
+
+    Config --> R["Rank r"]
+    Config --> Alpha["Alpha α"]
+    Config --> LR["Learning Rate"]
+    Config --> TM["Target Modules"]
+
+    R --> Rbajo["r bajo (4-8)<br/>Regularización fuerte<br/>Menos VRAM"]
+    R --> Ralto["r alto (32-64)<br/>Más capacidad<br/>Riesgo de overfitting"]
+
+    Alpha --> A1["α = r<br/>Factor escala 1.0<br/>Estable"]
+    Alpha --> A2["α = 2r<br/>Updates agresivos"]
+
+    TM --> TM1["Solo atención<br/>(q, v)"]
+    TM --> TM2["Atención completa<br/>(q, k, v, o)"]
+    TM --> TM3["Atención + MLP<br/>(todos los módulos)"]
+
+    classDef config fill:#3498db,stroke:#2980b9,color:#fff
+    classDef param fill:#9b59b6,stroke:#8e44ad,color:#fff
+    classDef bajo fill:#2ecc71,stroke:#27ae60,color:#fff
+    classDef alto fill:#e74c3c,stroke:#c0392b,color:#fff
+    classDef medio fill:#f39c12,stroke:#d68910,color:#fff
+
+    class Config config
+    class R,Alpha,LR,TM param
+    class Rbajo,A1,TM1 bajo
+    class Ralto,A2,TM3 alto
+    class TM2 medio

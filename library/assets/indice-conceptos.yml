@@ -1,0 +1,957 @@
+# Índice global de conceptos del libro
+# Mantenido por el agente `scanner`, consumido por el agente `enlazador`.
+#
+# - capitulos.NN: metadatos por capítulo (título, slug, tema, dificultad, conceptos).
+# - conceptos: mapeo concepto → capítulo_central + otros capítulos donde aparece.
+#
+# Este archivo se va poblando incrementalmente: el scanner corre una vez por
+# capítulo (paralelizable) y añade/actualiza su entrada sin pisar las otras.
+
+version: 1
+actualizado: "2026-04-18"
+
+capitulos:
+  "08":
+    titulo: "Inferencia LLM a Escala: de un Request a Miles de Usuarios"
+    slug: "08-inferencia-llms-a-escala"
+    tema_principal: "inferencia-y-serving"
+    dificultad: "avanzado"
+    conceptos_centrales:
+      - prefill
+      - decode
+      - kv-cache
+      - ttft
+      - tpot
+      - static-batching
+      - continuous-batching
+      - ragged-batching
+      - chunked-prefill
+      - prefill-decode-disaggregation
+      - paged-attention
+      - vllm
+      - kvcached
+      - ollama
+      - llama-cpp
+      - sglang
+      - glm-ocr
+      - compute-bound
+      - memory-bandwidth-bound
+      - block-manager
+    conceptos_mencionados:
+      - hbm
+      - sram
+      - nvlink
+      - infiniband
+      - gguf
+      - modelfile
+      - flash-attention
+      - grouped-query-attention
+      - multi-query-attention
+      - beam-search
+      - copy-on-write
+      - prefix-caching
+      - mig
+      - tensor-parallelism
+      - inter-token-latency
+      - token-padding
+      - dynamic-batching
+      - attention-mask
+      - request-router
+      - glm-v
+      - multi-token-prediction
+      - quantization
+  "07":
+    titulo: "Más Allá del Texto: Fine-tuning Multimodal para Visión y Síntesis de Voz"
+    slug: "07-finetuning-multimodal-vision-tts"
+    tema_principal: "multimodal"
+    dificultad: "intermedio"
+    conceptos_centrales:
+      - vision-language-model
+      - vlm
+      - fine-tuning-multimodal
+      - vision-transformer
+      - vit
+      - text-to-speech
+      - tts
+      - neural-audio-codec
+      - snac
+    conceptos_mencionados:
+      - vision-encoder
+      - projector
+      - self-attention
+      - lora
+      - qlora
+      - patches
+      - embedding
+      - positional-encoding
+      - cross-attention
+      - catastrophic-forgetting
+      - fine-tuning-completo
+      - mel-spectrogram
+      - codec
+      - interleaving
+      - gradient-checkpointing
+      - quantization
+  "06":
+    titulo: "GRPO: Optimización de Políticas sin Crítico"
+    slug: "06-grpo-y-variantes"
+    tema_principal: "técnica-rl"
+    dificultad: "intermedio"
+    conceptos_centrales:
+      - grpo
+      - group-relative-policy-optimization
+      - dapo
+      - gspo
+      - dr-grpo
+      - importance-sampling
+      - policy-gradient
+    conceptos_mencionados:
+      - ppo
+      - reward-model
+      - advantage-function
+      - critic
+      - modelo-de-referencia
+      - critic-value-estimation
+      - deepseek
+      - mixture-of-experts
+      - routing-replay
+      - clipping
+      - z-score
+      - gradient
+      - valor-futuro
+  "05":
+    titulo: "RLHF: Cómo Enseñarle a un LLM Qué es lo que los Humanos Prefieren"
+    slug: "05-rlhf-alineacion-llms"
+    tema_principal: "alineacion-rlhf"
+    dificultad: "intermedio"
+    conceptos_centrales:
+      - rlhf
+      - ppo
+      - dpo
+      - reward-model
+      - kl-divergence
+    conceptos_mencionados:
+      - aprendizaje-por-refuerzo
+      - policy-gradient
+      - supervised-fine-tuning
+      - función-pérdida
+      - gradiente
+      - preentrenamiento
+      - preferencias-humanas
+      - reinforce
+      - ipolipo
+      - kto
+      - rejection-sampling
+      - rlaif
+      - advantage-function
+      - clipping
+      - alineación
+  "04":
+    titulo: "QLoRA: Cómo la Cuantización a 4 Bits Rompe el Muro de la VRAM"
+    slug: "04-qlora-cuantizacion-4bit"
+    tema_principal: "técnica-peft"
+    dificultad: "intermedio"
+    conceptos_centrales:
+      - qlora
+      - cuantización-4bit
+      - nf4
+      - double-quantization
+      - paged-optimizer
+    conceptos_mencionados:
+      - kv-cache
+      - cuantización
+      - fp32
+      - fp16
+      - bf16
+      - unified-memory
+      - gradient-spike
+      - lora
+      - adamw
+      - modelo-base
+      - int8
+      - tensor-cores
+      - unsloth
+      - bitsandbytes
+      - huggingface
+      - qwen3
+      - gradient-checkpointing
+      - batch-size
+      - learning-rate
+      - overfitting
+  "03":
+    titulo: "LoRA: Adaptación de Bajo Rango desde los Fundamentos"
+    slug: "03-lora-adaptacion-de-bajo-rango"
+    tema_principal: "técnica-peft"
+    dificultad: "intermedio"
+    conceptos_centrales:
+      - lora
+      - low-rank-adaptation
+      - intrinsic-rank-hypothesis
+      - factorización-de-bajo-rango
+      - olvido-catastrófico
+    conceptos_mencionados:
+      - fine-tuning-completo
+      - matriz-de-pesos
+      - transformer
+      - atención
+      - autoencoder
+      - modelo-base
+      - gradient
+      - adam-optimizer
+      - bf16
+      - q-proj
+      - k-proj
+      - v-proj
+      - o-proj
+      - gate-proj
+      - up-proj
+      - down-proj
+      - llama
+      - mistral
+      - multi-lora
+  "02":
+    titulo: "Supervised Fine-Tuning: Cómo un Modelo Aprende a Conversar"
+    slug: "02-supervised-finetuning"
+    tema_principal: "técnica-sft"
+    dificultad: "introducción"
+    conceptos_centrales:
+      - supervised-fine-tuning
+      - sft
+      - chat-template
+      - loss-masking
+      - chain-of-thought
+      - continued-pretraining
+    conceptos_mencionados:
+      - token
+      - tokenización
+      - crossentropyloss
+      - transformer
+      - atención
+      - preentrenamiento
+      - modelo-base
+      - qwen3
+      - flash-attention-2
+      - gradient-clipping
+      - learning-rate
+      - overfitting
+      - lima-hypothesis
+      - reinforcement-learning
+      - knowledge-distillation
+  "01":
+    titulo: "El mapa del territorio: Transformers, pretraining y la pipeline de entrenamiento de LLMs"
+    slug: "01-fundamentos-transformers-y-pretraining"
+    tema_principal: "arquitectura-y-pretraining"
+    dificultad: "introducción"
+    conceptos_centrales:
+      - transformer
+      - atención
+      - self-attention
+      - pretraining
+      - causal-language-modeling
+      - modelo-base
+    conceptos_mencionados:
+      - rnn
+      - lstm
+      - encoder-decoder
+      - bert
+      - t5
+      - decoder-only
+      - gpt
+      - llama
+      - mistral
+      - qwen
+      - fine-tuning
+      - supervised-fine-tuning
+      - rlhf
+      - continued-pre-training
+      - knowledge-distillation
+      - activation-checkpointing
+      - gradient-accumulation
+      - bf16
+      - data-parallelism
+      - tensor-parallelism
+      - pipeline-parallelism
+      - sequence-parallelism
+      - fsdp
+
+conceptos:
+  vision-language-model:
+    tipo: modelo
+    capitulo_central: "07"
+    tambien_en: []
+  vlm:
+    tipo: modelo
+    capitulo_central: "07"
+    tambien_en: []
+  fine-tuning-multimodal:
+    tipo: técnica
+    capitulo_central: "07"
+    tambien_en: []
+  vision-transformer:
+    tipo: modelo
+    capitulo_central: "07"
+    tambien_en: []
+  vit:
+    tipo: modelo
+    capitulo_central: "07"
+    tambien_en: []
+  text-to-speech:
+    tipo: técnica
+    capitulo_central: "07"
+    tambien_en: []
+  tts:
+    tipo: técnica
+    capitulo_central: "07"
+    tambien_en: []
+  neural-audio-codec:
+    tipo: modelo
+    capitulo_central: "07"
+    tambien_en: []
+  snac:
+    tipo: modelo
+    capitulo_central: "07"
+    tambien_en: []
+  grpo:
+    tipo: técnica
+    capitulo_central: "06"
+    tambien_en: []
+  group-relative-policy-optimization:
+    tipo: técnica
+    capitulo_central: "06"
+    tambien_en: []
+  dapo:
+    tipo: técnica
+    capitulo_central: "06"
+    tambien_en: []
+  gspo:
+    tipo: técnica
+    capitulo_central: "06"
+    tambien_en: []
+  dr-grpo:
+    tipo: técnica
+    capitulo_central: "06"
+    tambien_en: []
+  importance-sampling:
+    tipo: concepto
+    capitulo_central: "06"
+    tambien_en: []
+  policy-gradient:
+    tipo: técnica
+    capitulo_central: "06"
+    tambien_en: ["05"]
+  critic:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["06"]
+  modelo-de-referencia:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["06"]
+  critic-value-estimation:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["06"]
+  deepseek:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["06"]
+  mixture-of-experts:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["06"]
+  routing-replay:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["06"]
+  z-score:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["06"]
+  valor-futuro:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["06"]
+  gradient:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["06"]
+  supervised-fine-tuning:
+    tipo: técnica
+    capitulo_central: "02"
+    tambien_en: ["01"]
+  sft:
+    tipo: técnica
+    capitulo_central: "02"
+    tambien_en: []
+  chat-template:
+    tipo: concepto
+    capitulo_central: "02"
+    tambien_en: []
+  loss-masking:
+    tipo: concepto
+    capitulo_central: "02"
+    tambien_en: []
+  chain-of-thought:
+    tipo: técnica
+    capitulo_central: "02"
+    tambien_en: []
+  token:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["02"]
+  tokenización:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["02"]
+  crossentropyloss:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["02"]
+  preentrenamiento:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["02"]
+  qwen3:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["02"]
+  flash-attention-2:
+    tipo: herramienta
+    capitulo_central: null
+    tambien_en: ["02"]
+  gradient-clipping:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["02", "04"]
+  learning-rate:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["02", "04"]
+  overfitting:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["02", "04"]
+  lima-hypothesis:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["02"]
+  reinforcement-learning:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["02"]
+  knowledge-distillation:
+    tipo: técnica
+    capitulo_central: "01"
+    tambien_en: ["02", "07"]
+  transformer:
+    tipo: modelo
+    capitulo_central: "01"
+    tambien_en: ["02", "03"]
+  atención:
+    tipo: concepto
+    capitulo_central: "01"
+    tambien_en: ["02", "03"]
+  self-attention:
+    tipo: concepto
+    capitulo_central: "01"
+    tambien_en: ["07"]
+  pretraining:
+    tipo: técnica
+    capitulo_central: "01"
+    tambien_en: []
+  causal-language-modeling:
+    tipo: concepto
+    capitulo_central: "01"
+    tambien_en: []
+  modelo-base:
+    tipo: concepto
+    capitulo_central: "01"
+    tambien_en: ["02", "03", "04"]
+  rnn:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["01"]
+  lstm:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["01"]
+  encoder-decoder:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["01"]
+  bert:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["01"]
+  t5:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["01"]
+  decoder-only:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["01"]
+  gpt:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["01"]
+  llama:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["01", "03"]
+  mistral:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["01", "03"]
+  qwen:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["01"]
+  fine-tuning:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["01"]
+  rlhf:
+    tipo: técnica
+    capitulo_central: "05"
+    tambien_en: ["01"]
+  continued-pre-training:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["01"]
+  activation-checkpointing:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["01", "04"]
+  gradient-accumulation:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["01"]
+  bf16:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["01", "04"]
+  data-parallelism:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["01"]
+  tensor-parallelism:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["01"]
+  pipeline-parallelism:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["01"]
+  sequence-parallelism:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["01"]
+  fsdp:
+    tipo: herramienta
+    capitulo_central: null
+    tambien_en: ["01"]
+  lora:
+    tipo: técnica
+    capitulo_central: "03"
+    tambien_en: ["04", "07"]
+  low-rank-adaptation:
+    tipo: técnica
+    capitulo_central: "03"
+    tambien_en: []
+  intrinsic-rank-hypothesis:
+    tipo: concepto
+    capitulo_central: "03"
+    tambien_en: []
+  factorización-de-bajo-rango:
+    tipo: concepto
+    capitulo_central: "03"
+    tambien_en: []
+  olvido-catastrófico:
+    tipo: concepto
+    capitulo_central: "03"
+    tambien_en: ["07"]
+  fine-tuning-completo:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["03", "07"]
+  matriz-de-pesos:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["03"]
+  autoencoder:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["03"]
+  adam-optimizer:
+    tipo: herramienta
+    capitulo_central: null
+    tambien_en: ["03"]
+  q-proj:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["03"]
+  k-proj:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["03"]
+  v-proj:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["03"]
+  o-proj:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["03"]
+  gate-proj:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["03"]
+  up-proj:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["03"]
+  down-proj:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["03"]
+  multi-lora:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["03"]
+  qlora:
+    tipo: técnica
+    capitulo_central: "04"
+    tambien_en: ["07"]
+  cuantización-4bit:
+    tipo: técnica
+    capitulo_central: "04"
+    tambien_en: []
+  nf4:
+    tipo: concepto
+    capitulo_central: "04"
+    tambien_en: []
+  double-quantization:
+    tipo: técnica
+    capitulo_central: "04"
+    tambien_en: []
+  paged-optimizer:
+    tipo: técnica
+    capitulo_central: "04"
+    tambien_en: []
+  kv-cache:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["04"]
+  cuantización:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["04"]
+  fp32:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["04"]
+  fp16:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["04"]
+  unified-memory:
+    tipo: herramienta
+    capitulo_central: null
+    tambien_en: ["04"]
+  gradient-spike:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["04"]
+  int8:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["04"]
+  tensor-cores:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["04"]
+  unsloth:
+    tipo: herramienta
+    capitulo_central: null
+    tambien_en: ["04"]
+  bitsandbytes:
+    tipo: herramienta
+    capitulo_central: null
+    tambien_en: ["04"]
+  batch-size:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["04"]
+  adamw:
+    tipo: herramienta
+    capitulo_central: null
+    tambien_en: ["04"]
+  qwen3:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["02", "04"]
+  gradient-checkpointing:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["04", "07"]
+  huggingface:
+    tipo: herramienta
+    capitulo_central: null
+    tambien_en: ["04"]
+  ppo:
+    tipo: técnica
+    capitulo_central: "05"
+    tambien_en: ["06"]
+  dpo:
+    tipo: técnica
+    capitulo_central: "05"
+    tambien_en: []
+  reward-model:
+    tipo: concepto
+    capitulo_central: "05"
+    tambien_en: ["06"]
+  kl-divergence:
+    tipo: concepto
+    capitulo_central: "05"
+    tambien_en: ["06"]
+  aprendizaje-por-refuerzo:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["05"]
+  policy-gradient:
+    tipo: técnica
+    capitulo_central: "06"
+    tambien_en: ["05"]
+  función-pérdida:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["05"]
+  preferencias-humanas:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["05"]
+  reinforce:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["05"]
+  ipolipo:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["05"]
+  kto:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["05"]
+  rejection-sampling:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["05"]
+  rlaif:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["05"]
+  advantage-function:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["05", "06"]
+  clipping:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["05", "06"]
+  alineación:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["05"]
+  vision-encoder:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["07"]
+  projector:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["07"]
+  patches:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["07"]
+  embedding:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["07"]
+  positional-encoding:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["07"]
+  cross-attention:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["07"]
+  mel-spectrogram:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["07"]
+  codec:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["07"]
+  interleaving:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["07"]
+  quantization:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["07", "08"]
+  prefill:
+    tipo: concepto
+    capitulo_central: "08"
+    tambien_en: []
+  decode:
+    tipo: concepto
+    capitulo_central: "08"
+    tambien_en: []
+  ttft:
+    tipo: concepto
+    capitulo_central: "08"
+    tambien_en: []
+  tpot:
+    tipo: concepto
+    capitulo_central: "08"
+    tambien_en: []
+  static-batching:
+    tipo: técnica
+    capitulo_central: "08"
+    tambien_en: []
+  continuous-batching:
+    tipo: técnica
+    capitulo_central: "08"
+    tambien_en: []
+  ragged-batching:
+    tipo: técnica
+    capitulo_central: "08"
+    tambien_en: []
+  chunked-prefill:
+    tipo: técnica
+    capitulo_central: "08"
+    tambien_en: []
+  prefill-decode-disaggregation:
+    tipo: técnica
+    capitulo_central: "08"
+    tambien_en: []
+  paged-attention:
+    tipo: técnica
+    capitulo_central: "08"
+    tambien_en: []
+  vllm:
+    tipo: herramienta
+    capitulo_central: "08"
+    tambien_en: []
+  kvcached:
+    tipo: herramienta
+    capitulo_central: "08"
+    tambien_en: []
+  ollama:
+    tipo: herramienta
+    capitulo_central: "08"
+    tambien_en: []
+  llama-cpp:
+    tipo: herramienta
+    capitulo_central: "08"
+    tambien_en: []
+  sglang:
+    tipo: herramienta
+    capitulo_central: "08"
+    tambien_en: []
+  glm-ocr:
+    tipo: modelo
+    capitulo_central: "08"
+    tambien_en: []
+  compute-bound:
+    tipo: concepto
+    capitulo_central: "08"
+    tambien_en: []
+  memory-bandwidth-bound:
+    tipo: concepto
+    capitulo_central: "08"
+    tambien_en: []
+  block-manager:
+    tipo: concepto
+    capitulo_central: "08"
+    tambien_en: []
+  hbm:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["08"]
+  sram:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["08"]
+  nvlink:
+    tipo: herramienta
+    capitulo_central: null
+    tambien_en: ["08"]
+  infiniband:
+    tipo: herramienta
+    capitulo_central: null
+    tambien_en: ["08"]
+  gguf:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["08"]
+  modelfile:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["08"]
+  grouped-query-attention:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["08"]
+  multi-query-attention:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["08"]
+  beam-search:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["08"]
+  copy-on-write:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["08"]
+  prefix-caching:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["08"]
+  mig:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["08"]
+  inter-token-latency:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["08"]
+  token-padding:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["08"]
+  dynamic-batching:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["08"]
+  attention-mask:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["08"]
+  request-router:
+    tipo: concepto
+    capitulo_central: null
+    tambien_en: ["08"]
+  glm-v:
+    tipo: modelo
+    capitulo_central: null
+    tambien_en: ["08"]
+  multi-token-prediction:
+    tipo: técnica
+    capitulo_central: null
+    tambien_en: ["08"]

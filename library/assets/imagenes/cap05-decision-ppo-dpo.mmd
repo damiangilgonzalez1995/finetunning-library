@@ -1,0 +1,35 @@
+graph TD
+    START["Necesitas alinear un modelo con preferencias humanas"] --> Q1{"Compute disponible"}
+
+    Q1 -- "Limitado\n(menos de 8 A100s para 7B)" --> DPO_PATH
+    Q1 -- "Amplio\n(8+ A100s para 7B)" --> Q2
+
+    Q2{"Prioridad principal"} -- "Velocidad de iteracion" --> DPO_PATH
+    Q2 -- "Maxima calidad de alignment" --> Q3
+
+    Q3{"Tienes preference dataset\nde alta calidad"} -- "Si" --> PPO_DIRECT["PPO directo"]
+    Q3 -- "No" --> STAGED
+
+    DPO_PATH["DPO\nRapido, 2 modelos, comparable a SFT"]
+    DPO_PATH --> Q4{"Calidad suficiente\nen benchmarks"}
+    Q4 -- "Si" --> SHIP1["Desplegar modelo"]
+    Q4 -- "No" --> STAGED
+
+    STAGED["Enfoque por etapas\nDPO como warm start\nluego PPO"]
+    STAGED --> PPO_FINAL["PPO refinement\nMaximo techo de alignment"]
+    PPO_DIRECT --> SHIP2["Desplegar modelo"]
+    PPO_FINAL --> SHIP2
+
+    classDef questionColor fill:#607D8B,color:#fff,stroke:#37474F
+    classDef dpoColor fill:#4CAF50,color:#fff,stroke:#388E3C
+    classDef ppoColor fill:#2196F3,color:#fff,stroke:#1565C0
+    classDef stagedColor fill:#FF9800,color:#fff,stroke:#E65100
+    classDef shipColor fill:#9C27B0,color:#fff,stroke:#6A1B9A
+    classDef startColor fill:#37474F,color:#fff,stroke:#263238
+
+    class START startColor
+    class Q1,Q2,Q3,Q4 questionColor
+    class DPO_PATH dpoColor
+    class PPO_DIRECT,PPO_FINAL ppoColor
+    class STAGED stagedColor
+    class SHIP1,SHIP2 shipColor

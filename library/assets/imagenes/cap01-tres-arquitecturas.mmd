@@ -1,0 +1,27 @@
+flowchart LR
+    subgraph EO["Encoder-only (BERT)"]
+        direction TB
+        A1[Tokens\nentrada] --> A2[Atención\nbidireccional]
+        A2 --> A3[Clasificar\nentender]
+    end
+
+    subgraph ED["Encoder-Decoder (T5)"]
+        direction TB
+        B1[Secuencia\nentrada] --> B2[Encoder\nbidireccional]
+        B2 --> B3[Cross-\nAttention]
+        B3 --> B4[Secuencia\nsalida]
+    end
+
+    subgraph DO["Decoder-only (GPT/LLaMA)"]
+        direction TB
+        C1[Contexto\nprevio] --> C2[Atención\ncausal]
+        C2 --> C3[Siguiente\ntoken]
+    end
+
+    classDef encOnly fill:#DBEAFE,stroke:#3B82F6,color:#1E3A5F
+    classDef encDec fill:#FEF9C3,stroke:#EAB308,color:#713F12
+    classDef decOnly fill:#DCFCE7,stroke:#22C55E,color:#14532D
+
+    class A1,A2,A3 encOnly
+    class B1,B2,B3,B4 encDec
+    class C1,C2,C3 decOnly

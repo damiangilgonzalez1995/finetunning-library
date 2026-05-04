@@ -1,0 +1,39 @@
+graph LR
+    subgraph TEXTO["Solo Texto"]
+        direction TB
+        T1["Entrada: tokens de texto"]
+        T2["LLM + LoRA"]
+        T3["Salida: tokens de texto"]
+        T1 --> T2 --> T3
+    end
+
+    subgraph VISION["Visión-Lenguaje (VLM)"]
+        direction TB
+        V1["Entrada: imagen + texto"]
+        V2["Vision Encoder\n(congelado)"]
+        V3["Proyección\n(congelada)"]
+        V4["LLM + LoRA"]
+        V5["Salida: texto"]
+        V1 --> V2 --> V3 --> V4 --> V5
+    end
+
+    subgraph AUDIO["Text-to-Speech (TTS)"]
+        direction TB
+        A1["Entrada: texto"]
+        A2["LLM + LoRA"]
+        A3["Tokens de audio"]
+        A4["Decoder del codec\n(congelado)"]
+        A5["Salida: forma de onda"]
+        A1 --> A2 --> A3 --> A4 --> A5
+    end
+
+    classDef frozen fill:#b3d9ff,stroke:#3399ff,color:#003366
+    classDef trainable fill:#c3f0c3,stroke:#33aa33,color:#003300
+    classDef io fill:#fff3b0,stroke:#ccaa00,color:#443300
+    classDef output fill:#ffd6d6,stroke:#cc3333,color:#440000
+
+    class T2 trainable
+    class V2,V3,A4 frozen
+    class V4,A2 trainable
+    class T1,V1,A1 io
+    class T3,V5,A5 output

@@ -1,0 +1,25 @@
+graph LR
+    subgraph SFT["SFT — Aprendizaje Supervisado"]
+        direction TB
+        A1[Prompt de entrada] --> B1[Respuesta correcta etiquetada]
+        B1 --> C1[Pérdida de cross-entropy]
+        C1 --> D1[Gradiente diferenciable]
+        D1 --> E1[Actualización de parámetros]
+    end
+
+    subgraph RLHF["RLHF — Aprendizaje por Preferencias"]
+        direction TB
+        A2[Prompt de entrada] --> B2[Respuesta A y Respuesta B]
+        B2 --> C2[Anotador humano elige la mejor]
+        C2 --> D2[Señal no diferenciable]
+        D2 --> E2[Policy gradient rodea el problema]
+        E2 --> F2[Actualización de parámetros]
+    end
+
+    classDef sftColor fill:#4CAF50,color:#fff,stroke:#388E3C
+    classDef rlhfColor fill:#2196F3,color:#fff,stroke:#1565C0
+    classDef limitColor fill:#F44336,color:#fff,stroke:#B71C1C
+
+    class A1,B1,C1,D1,E1 sftColor
+    class A2,B2,C2,E2,F2 rlhfColor
+    class D2 limitColor

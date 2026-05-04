@@ -1,0 +1,10 @@
+flowchart LR
+    A["Tokens Sistema\ny Usuario"] -->|"label = -100"| B["Sin gradiente\nIgnorados"]
+    C["Tokens\nAsistente"] -->|"label = real"| D["Genera gradiente"]
+    D --> E["Actualiza pesos\ndel modelo"]
+
+    style A fill:#e74c3c,color:#fff,stroke:#c0392b
+    style B fill:#8c8c8c,color:#fff,stroke:#5c5c5c
+    style C fill:#50b86c,color:#fff,stroke:#2d8a4e
+    style D fill:#4a90d9,color:#fff,stroke:#2a5f9e
+    style E fill:#9b59b6,color:#fff,stroke:#7d3c98

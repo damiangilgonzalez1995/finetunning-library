@@ -1,0 +1,28 @@
+graph TD
+    Init["Inicio del entrenamiento"]
+    Binit["B inicializado a cero"]
+    Ainit["A inicialización gaussiana"]
+    DW0["ΔW = B · A = 0<br/>Modelo se comporta como el base"]
+    Train["Entrenamiento progresivo"]
+    Scale["Factor de escalado: α / r"]
+    DWeff["ΔW efectivo = (α/r) · B · A"]
+    Result["Adaptación gradual<br/>sin perturbaciones bruscas"]
+
+    Init --> Binit
+    Init --> Ainit
+    Binit --> DW0
+    Ainit --> DW0
+    DW0 --> Train
+    Train --> Scale
+    Scale --> DWeff
+    DWeff --> Result
+
+    classDef inicio fill:#3498db,stroke:#2980b9,color:#fff
+    classDef matrices fill:#9b59b6,stroke:#8e44ad,color:#fff
+    classDef proceso fill:#e67e22,stroke:#d35400,color:#fff
+    classDef resultado fill:#2ecc71,stroke:#27ae60,color:#fff
+
+    class Init inicio
+    class Binit,Ainit matrices
+    class DW0,Train,Scale,DWeff proceso
+    class Result resultado

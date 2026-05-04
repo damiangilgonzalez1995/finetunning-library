@@ -1,0 +1,20 @@
+flowchart LR
+    subgraph CAL["Calidad de datos"]
+        direction LR
+        A([Libros\nde texto]) --> B([Papers\ncurados]) --> C([Foros\nespec.]) --> D([Posts\ncasuales])
+    end
+
+    subgraph CTX["Longitud de contexto"]
+        direction LR
+        E([512\ntokens]) --> F([2048\ntokens]) --> G([8192\ntokens])
+    end
+
+    classDef gold fill:#DCFCE7,stroke:#22C55E,color:#14532D
+    classDef silver fill:#FEF9C3,stroke:#EAB308,color:#713F12
+    classDef bronze fill:#FEE2E2,stroke:#EF4444,color:#7F1D1D
+    classDef ctx fill:#DBEAFE,stroke:#3B82F6,color:#1E3A5F
+
+    class A gold
+    class B silver
+    class C,D bronze
+    class E,F,G ctx

@@ -1,0 +1,17 @@
+graph LR
+    A["Pretraining<br/><i>Predecir siguiente token</i>"] --> B["SFT<br/><i>Fine-tuning supervisado</i>"]
+    B --> C["RLHF<br/><i>Alineación con preferencias</i>"]
+
+    A -.- A1["Fluencia y<br/>conocimiento general"]
+    B -.- B1["Seguir instrucciones<br/>y formato"]
+    C -.- C1["Respuestas que los<br/>humanos prefieren"]
+
+    classDef etapa1 fill:#4A90D9,stroke:#2C5F8A,color:#FFFFFF,font-weight:bold
+    classDef etapa2 fill:#F5A623,stroke:#C4841C,color:#FFFFFF,font-weight:bold
+    classDef etapa3 fill:#7ED321,stroke:#5A9A18,color:#FFFFFF,font-weight:bold
+    classDef detalle fill:#F0F0F0,stroke:#CCCCCC,color:#555555
+
+    class A etapa1
+    class B etapa2
+    class C etapa3
+    class A1,B1,C1 detalle

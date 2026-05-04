@@ -1,0 +1,24 @@
+graph LR
+    subgraph Tradicional["SFT Tradicional"]
+        direction LR
+        T1["A<br/>Pregunta"] -->|"Salto directo"| T2["C<br/>Respuesta"]
+        T3["Riesgo: alucinaciones<br/>y atajos"]
+    end
+
+    subgraph Reasoning["Reasoning SFT"]
+        direction LR
+        R1["A<br/>Pregunta"] -->|"Paso 1"| R2["B<br/>Razonamiento<br/>en bloque think"]
+        R2 -->|"Paso 2"| R3["C<br/>Respuesta<br/>verificada"]
+    end
+
+    classDef pregunta fill:#4a90d9,color:#fff,stroke:#2a5f9e
+    classDef respTrad fill:#e74c3c,color:#fff,stroke:#c0392b
+    classDef razonamiento fill:#e8a838,color:#fff,stroke:#b8821c
+    classDef respReas fill:#50b86c,color:#fff,stroke:#2d8a4e
+    classDef riesgo fill:#8c8c8c,color:#fff,stroke:#5c5c5c
+
+    class T1,R1 pregunta
+    class T2 respTrad
+    class R2 razonamiento
+    class R3 respReas
+    class T3 riesgo

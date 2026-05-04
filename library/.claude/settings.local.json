@@ -1,0 +1,44 @@
+{
+  "permissions": {
+    "allow": [
+      "Write",
+      "Edit",
+      "Bash(python scripts/build-word.py)",
+      "Bash(pip install python-docx)",
+      "WebFetch(domain:theneuralmaze.substack.com)",
+      "Bash(ls assets/imagenes/cap04-*.mmd)",
+      "Bash(ls -la assets/imagenes/cap01-*.mmd)",
+      "Bash(ls assets/imagenes/cap05-*.mmd)",
+      "Bash(ls -la assets/imagenes/cap02-*.mmd)",
+      "Bash(winget install:*)",
+      "Bash(bash scripts/mermaid-to-png.sh)",
+      "Read(//c/Users/Usuario/AppData/Local/Pandoc/**)",
+      "Read(//c/Program Files/Pandoc/**)",
+      "Read(//c/Users/Usuario/AppData/**)",
+      "Bash(where pandoc:*)",
+      "Bash(ls /c/Users/Usuario/AppData/Local/Microsoft/WinGet/Packages/*/pandoc.exe)",
+      "Bash(python scripts/build-word.py)",
+      "Bash(python -c \"import docx; print\\('python-docx', docx.__version__\\)\")",
+      "Bash(python -c \"import markdown; print\\('markdown', markdown.__version__\\)\")",
+      "Bash(python scripts/_check_math.py)",
+      "Bash(python scripts/_test_math.py)",
+      "Bash(PYTHONIOENCODING=utf-8 python scripts/_test_math.py)",
+      "Bash(PYTHONIOENCODING=utf-8 python scripts/_find_math_blocks.py)",
+      "Bash(python -c ':*)",
+      "Bash(mmdc -i /c/Users/Usuario/Documents/GitHub/finetunning-library/assets/imagenes/__TRACKED_VAR__.mmd -o /c/Users/Usuario/Documents/GitHub/finetunning-library/assets/imagenes/__TRACKED_VAR__.png -b transparent -w 1200)",
+      "Bash(py --version)",
+      "Bash(py3 --version)",
+      "Bash(py:*)",
+      "Bash(ls /c/Users/Usuario/Documents/GitHub/finetunning-library/capitulos/*.md)",
+      "Bash(python3 *)",
+      "Bash(mkdir library *)",
+      "Bash(git mv *)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Usuario\\Documents\\GitHub\\finetunning-library\\docs\\superpowers",
+      "C:\\Users\\Usuario\\Documents\\GitHub\\finetunning-library\\.claude",
+      "c:\\Users\\Usuario\\Documents\\GitHub\\finetunning-library\\.claude\\commands",
+      "C:\\Users\\Usuario\\Documents\\GitHub\\finetunning-library\\scripts"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+graph TD
+    A["Evaluación de modelo SFT"] --> B["Métricas clásicas"]
+    A --> C["Evaluación de comportamiento"]
+    A --> D["Benchmarks agénticos"]
+
+    B --> B1["Perplexity / Loss<br/>Cuidado: loss baja = memorización"]
+
+    C --> C1["LLM-as-a-judge<br/>Evalúa claridad, tono, utilidad"]
+    C --> C2["IFEval<br/>Restricciones estrictas de formato"]
+
+    D --> D1["GAIA<br/>Tareas con herramientas"]
+    D --> D2["SWE-bench<br/>Ingeniería de software"]
+    D --> D3["WebShop / Mind2Web<br/>Navegación web"]
+
+    classDef rootStyle fill:#4a90d9,color:#fff,stroke:#2a5f9e
+    classDef catStyle fill:#e8a838,color:#fff,stroke:#b8821c
+    classDef warnStyle fill:#e74c3c,color:#fff,stroke:#c0392b
+    classDef evalStyle fill:#50b86c,color:#fff,stroke:#2d8a4e
+    classDef benchStyle fill:#9b59b6,color:#fff,stroke:#7d3c98
+
+    class A rootStyle
+    class B,C,D catStyle
+    class B1 warnStyle
+    class C1,C2 evalStyle
+    class D1,D2,D3 benchStyle

@@ -1,0 +1,26 @@
+graph TD
+    IMG["Imagen de entrada\n(píxeles)"]
+    VIT["Vision Encoder\n(Vision Transformer / ViT)\nDivide en parches → tokens visuales"]
+    PROJ["Capa de Proyección\n(MLP / Cross-Attention)\nAdapta espacio visual → espacio LLM"]
+    CONCAT["Concatenación\n[tokens visuales + tokens de texto]"]
+    LLM["Decoder LLM\n(Transformer autorregresivo)\nAdaptadores LoRA en capas de atención"]
+    OUT["Respuesta en texto\n(generada token a token)"]
+    TXT["Prompt de texto\n(tokens)"]
+
+    IMG --> VIT
+    VIT -->|"N_v tokens\n(espacio d_v)"| PROJ
+    PROJ -->|"N'_v tokens\n(espacio d del LLM)"| CONCAT
+    TXT --> CONCAT
+    CONCAT --> LLM
+    LLM --> OUT
+
+    classDef frozen fill:#b3d9ff,stroke:#3399ff,color:#003366
+    classDef trainable fill:#c3f0c3,stroke:#33aa33,color:#003300
+    classDef data fill:#fff3b0,stroke:#ccaa00,color:#443300
+    classDef output fill:#ffd6d6,stroke:#cc3333,color:#440000
+
+    class VIT frozen
+    class PROJ frozen
+    class LLM trainable
+    class IMG,TXT data
+    class OUT output

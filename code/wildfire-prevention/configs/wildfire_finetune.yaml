@@ -1,0 +1,54 @@
+# Config de leap-finetune para fine-tuning LOCAL en RTX 3060 12GB.
+# Estrategia: LoRA (use_peft: true) — full fine-tuning no cabe en consumer GPU.
+#
+# Paths ABSOLUTOS para evitar dolores de cabeza con el cwd al lanzar leap-finetune.
+# Reemplaza los paths si mueves el proyecto.
+
+project_name: "wildfire-prevention"
+model_name: "lfm2.5-VL-450M"
+training_type: "vlm_sft"
+
+# ---------------------------------------------------------------------------
+# Dataset: dónde están los JSONLs y la carpeta de imágenes.
+# ---------------------------------------------------------------------------
+dataset:
+  path: "C:/Users/Usuario/Documents/GitHub/finetunning-library/code/wildfire-prevention/data/wildfire/wildfire_train.jsonl"
+  type: "vlm_sft"
+  test_size: 0.0   # no separamos un eval interno; ya tenemos wildfire_test.jsonl en benchmarks
+  image_root: "C:/Users/Usuario/Documents/GitHub/finetunning-library/code/wildfire-prevention/data/wildfire/images"
+  # limit: 50      # descomenta para una prueba rapida con solo 50 muestras
+
+# ---------------------------------------------------------------------------
+# Hiperparametros de entrenamiento.
+# ---------------------------------------------------------------------------
+training_config:
+  extends: "DEFAULT_VLM_SFT"           # hereda defaults razonables y solo sobreescribimos lo importante
+  num_train_epochs: 3                   # 3 pasadas completas sobre el train set
+  per_device_train_batch_size: 2        # 2 muestras por step. Sube si tienes VRAM libre
+  gradient_accumulation_steps: 8        # acumula 8 steps antes de actualizar pesos -> batch efectivo 16
+  learning_rate: 2e-5                   # tipico para SFT VLM. Mas alto = inestable, mas bajo = lento
+  lr_scheduler_type: "cosine"           # baja el lr en forma de coseno a lo largo del entrenamiento
+  warmup_ratio: 0.03                    # primer 3% de steps con lr creciente para evitar shock inicial
+  seed: 42
+  eval_on_start: true                   # lanza una eval ANTES de entrenar -> baseline del modelo virgen
+  eval_strategy: "epoch"                # evalua al final de cada epoch
+  save_strategy: "epoch"                # guarda checkpoint al final de cada epoch
+  logging_steps: 5                      # log cada 5 steps
+
+# ---------------------------------------------------------------------------
+# PEFT: usamos LoRA (Low-Rank Adaptation) para que quepa en 12GB.
+# ---------------------------------------------------------------------------
+peft_config:
+  extends: "DEFAULT_VLM_LORA"           # hereda r, alpha, dropout, target_modules razonables
+  use_peft: true                        # true = LoRA. false = full fine-tuning (NO cabe en RTX 3060)
+
+# ---------------------------------------------------------------------------
+# Benchmarks: evaluacion sobre el split de test al final de cada epoch.
+# ---------------------------------------------------------------------------
+benchmarks:
+  image_root: "C:/Users/Usuario/Documents/GitHub/finetunning-library/code/wildfire-prevention/data/wildfire/images"
+  benchmarks:
+    - name: "wildfire_eval"
+      path: "C:/Users/Usuario/Documents/GitHub/finetunning-library/code/wildfire-prevention/data/wildfire/wildfire_test.jsonl"
+      metric: "short_answer"            # comparacion textual; en evaluate.py luego haremos eval por campo
+      max_new_tokens: 256               # margen suficiente para el JSON de 6 campos

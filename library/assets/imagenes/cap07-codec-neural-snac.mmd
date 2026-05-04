@@ -1,0 +1,22 @@
+flowchart LR
+    WAVE["Forma de onda\naudio crudo\n24 kHz"] --> ENC["Encoder\nSNAC"]
+    ENC --> L1["Capa 1\n12 Hz\nritmo global"]
+    ENC --> L2["Capa 2\n24 Hz\ncontorno fonético"]
+    ENC --> L3["Capa 3\n48 Hz\ntextura acústica"]
+    L1 --> IL["Interleaving\n7 tokens/frame"]
+    L2 --> IL
+    L3 --> IL
+    IL --> DEC["Decoder\nSNAC"]
+    DEC --> OUT["Audio\nreconstruido"]
+
+    classDef input fill:#fff8e1,stroke:#f9a825,stroke-width:2px,color:#5a3e00
+    classDef enc fill:#e8f4f8,stroke:#0277bd,stroke-width:2px,color:#01304a
+    classDef layer fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#3a0052
+    classDef proc fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#0a3d0a
+    classDef out fill:#fce4ec,stroke:#c62828,stroke-width:2px,color:#5a0000
+
+    class WAVE input
+    class ENC enc
+    class L1,L2,L3 layer
+    class IL proc
+    class DEC,OUT out

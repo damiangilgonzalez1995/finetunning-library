@@ -1,0 +1,39 @@
+{
+  "model_name": "unsloth/Qwen2.5-VL-7B-Instruct",
+  "model_short": "qwen25_vl_7b",
+  "training": {
+    "num_params_total": 5235608576,
+    "num_params_trainable": 206086144,
+    "vram_peak_gb": 12.2265625,
+    "training_time_min": 86.36376166666668,
+    "epochs_actual": 2.0,
+    "loss_train_final": 0.18098673641819646,
+    "config": {
+      "r": 64,
+      "lora_alpha": 64,
+      "lora_dropout": 0.05,
+      "finetune_vision_layers": true,
+      "load_in_4bit": true,
+      "num_train_epochs_max": 5,
+      "early_stopping_patience": 1,
+      "batch_effective": 8,
+      "learning_rate": 0.0001,
+      "lr_scheduler": "cosine",
+      "warmup_ratio": 0.03
+    }
+  },
+  "eval": {
+    "num_samples": 172,
+    "valid_json": 1.0,
+    "accuracy_per_field": {
+      "risk_level": 0.7151162790697675,
+      "dry_vegetation_present": 0.8430232558139535,
+      "urban_interface": 0.9476744186046512,
+      "steep_terrain": 0.8953488372093024,
+      "water_body_present": 0.8430232558139535,
+      "image_quality_limited": 0.9593023255813954
+    },
+    "overall": 0.8672480620155039,
+    "inference_time_per_sample_s": 3.1308719016784847
+  }
+}

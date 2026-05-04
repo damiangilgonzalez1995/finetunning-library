@@ -1,0 +1,20 @@
+flowchart LR
+    REQ[Request\nprompt] --> GP[GPU-P\nPrefill instance]
+    GP --> KV[KV Cache\n~1.34 GB]
+    GP --> T1[Primer token]
+    KV --> NET{Transferencia\nNVLink / IB}
+    T1 --> NET
+    NET --> GD[GPU-D\nDecode instance]
+    GD --> OUT[Respuesta\ncompleta]
+
+    classDef datos    fill:#F5A623,stroke:#C47D0E,color:#fff
+    classDef proceso  fill:#50B86C,stroke:#2D7A42,color:#fff
+    classDef modelo   fill:#4A90D9,stroke:#2C5F8A,color:#fff
+    classDef metrica  fill:#E67E6B,stroke:#B04A3C,color:#fff
+    classDef alerta   fill:#E85C5C,stroke:#A83C3C,color:#fff
+
+    class REQ datos
+    class GP,GD modelo
+    class KV datos
+    class T1,OUT metrica
+    class NET alerta

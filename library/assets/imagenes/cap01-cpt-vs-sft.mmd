@@ -1,0 +1,20 @@
+graph LR
+    subgraph CPT["Continued PreTraining (CPT)"]
+        direction TB
+        A1["Entrada:<br/>Texto crudo de dominio"] --> A2["Objetivo:<br/>Predicción del siguiente token"]
+        A2 --> A3["Resultado:<br/>Conocimiento de dominio"]
+    end
+
+    subgraph SFT["Supervised Finetuning (SFT)"]
+        direction TB
+        B1["Entrada:<br/>Pares (prompt, respuesta)"] --> B2["Objetivo:<br/>Seguir instrucciones"]
+        B2 --> B3["Resultado:<br/>Modelo conversacional"]
+    end
+
+    CPT -.->|"Primero saber,<br/>luego expresar"| SFT
+
+    classDef cptStyle fill:#4A90D9,stroke:#2C5F8A,color:#fff
+    classDef sftStyle fill:#50B86C,stroke:#2D7A42,color:#fff
+
+    class A1,A2,A3 cptStyle
+    class B1,B2,B3 sftStyle

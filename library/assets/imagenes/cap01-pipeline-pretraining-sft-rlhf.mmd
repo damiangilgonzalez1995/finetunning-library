@@ -1,0 +1,14 @@
+flowchart LR
+    A([Texto crudo\nInternet]) --> B[Pretraining\nCLM]
+    B --> C([Modelo base\nFoundation])
+    C --> D[Supervised\nFine-Tuning]
+    D --> E([Modelo\nInstruido])
+    E --> F[RLHF\nAlineación]
+    F --> G([Asistente\nútil])
+
+    classDef datos fill:#DBEAFE,stroke:#3B82F6,color:#1E3A5F
+    classDef proceso fill:#FEF9C3,stroke:#EAB308,color:#713F12
+    classDef modelo fill:#DCFCE7,stroke:#22C55E,color:#14532D
+
+    class A,C,E,G datos
+    class B,D,F proceso

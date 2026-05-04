@@ -1,0 +1,38 @@
+{
+  "model_name": "LiquidAI/LFM2.5-VL-450M",
+  "model_short": "lfm25_vl_450m",
+  "training": {
+    "num_params_total": 450000000,
+    "num_params_trainable": null,
+    "vram_peak_gb": null,
+    "training_time_min": null,
+    "loss_train_final": null,
+    "config": {
+      "r": 64,
+      "lora_alpha": 64,
+      "lora_dropout": 0.05,
+      "finetune_vision_layers": true,
+      "load_in_4bit": false,
+      "num_train_epochs": 3,
+      "batch_effective": 8,
+      "learning_rate": 1e-4,
+      "lr_scheduler": "cosine",
+      "warmup_ratio": 0.03
+    }
+  },
+  "eval": {
+    "num_samples": 172,
+    "valid_json": 1.0,
+    "accuracy_per_field": {
+      "risk_level": null,
+      "dry_vegetation_present": null,
+      "urban_interface": null,
+      "steep_terrain": null,
+      "water_body_present": null,
+      "image_quality_limited": null
+    },
+    "overall": 0.84,
+    "inference_time_per_sample_s": null
+  },
+  "_note": "Datos del baseline LFM2.5-VL-450M con r=64. Solo se conoce overall=0.84 y valid_json=1.0. Los campos null hay que rellenarlos a mano cuando tengas el desglose por campo del run final."
+}

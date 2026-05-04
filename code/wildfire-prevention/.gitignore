@@ -1,0 +1,18 @@
+# Secretos
+.env
+
+# Datos del dataset (descargados desde HF)
+data/
+_dataset_cache/
+
+# Checkpoints de entrenamiento (pesados, regenerables)
+outputs/
+
+# Cache de Unsloth (compilación JIT, regenerable)
+unsloth_compiled_cache/
+
+# uv / venv
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

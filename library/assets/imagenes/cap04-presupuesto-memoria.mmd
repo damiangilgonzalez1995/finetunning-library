@@ -1,0 +1,23 @@
+flowchart LR
+    PF["Pesos FP16\n2 bytes/param"]
+    GR["Gradientes\n2 bytes/param"]
+    CM["Copia maestra FP32\n4 bytes/param"]
+    M1["Momento 1\nAdamW FP32\n4 bytes/param"]
+    M2["Momento 2\nAdamW FP32\n4 bytes/param"]
+    TOT["Total\n16 bytes/param\n~112 GB para 7B"]
+
+    PF --> TOT
+    GR --> TOT
+    CM --> TOT
+    M1 --> TOT
+    M2 --> TOT
+
+    classDef peso fill:#e74c3c,stroke:#c0392b,color:#fff
+    classDef grad fill:#e67e22,stroke:#d35400,color:#fff
+    classDef opt fill:#3498db,stroke:#2980b9,color:#fff
+    classDef total fill:#2ecc71,stroke:#27ae60,color:#fff
+
+    class PF peso
+    class GR grad
+    class CM,M1,M2 opt
+    class TOT total
