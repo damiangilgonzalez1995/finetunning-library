@@ -3,8 +3,6 @@
     "allow": [
       "Read(//c/Users/Usuario/Documents/GitHub/cookbook-liquid/examples/**)",
       "Read(//c/Users/Usuario/Documents/GitHub/cookbook-liquid/examples/wildfire-prevention/**)",
-      "Bash(HF_TOKEN=\"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\" uv sync)",
-      "Bash(HF_TOKEN=\"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\" uv run hf auth whoami)",
       "Bash(C:/Users/Usuario/Documents/GitHub/finetunning-library/code/wildfire-prevention/.venv/Scripts/python.exe *)",
       "Bash(.venv/Scripts/python.exe -c \"from dotenv import load_dotenv; print\\('OK -> load_dotenv:', load_dotenv\\)\")",
       "Bash(rm -rf \"C:/Users/Usuario/Documents/GitHub/finetunning-library/.venv\")",
